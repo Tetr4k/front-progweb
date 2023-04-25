@@ -4,12 +4,11 @@ import "./index.sass"
 import { useState } from "react";
 
 function Chat() {
-	const [history, setHistory] = useState([{owner: false, message: "Im going to kill u!"}]);
+	const [history, setHistory] = useState([{owner: false, message: "Hello!"}]);
 	const [message, setMessage] = useState("");
 
-	const handleMessageChange = (event) => {
+	const handleMessageChange = (event) =>
 		setMessage(event.target.value)
-	}
 
 	const handleEnterPressed = (event) => {
 		if (event.key === 'Enter')
@@ -29,15 +28,15 @@ function Chat() {
 	const addMessage = () => {
 		const newHistory = history
 		if (message !== ""){
-			newHistory.push({owner: true, message: message}, {owner: false, message: "Im going to kill u!"})
+			newHistory.push({owner: true, message: message}, {owner: false, message: "Hello!"})
 			setHistory(newHistory)
 			setMessage("")
 		}
 	}
 
 	return (
-		<main className="chat">
-			<ul>
+		<main>
+			<ul className="chat">
 				{renderChat()}
 			</ul>
 			<div className="input">

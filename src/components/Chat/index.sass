@@ -1,27 +1,33 @@
 .chat
-	bottom: 0
-	margin-bottom: 4rem
-	position: absolute
+	display: flex
+	justify-content: flex-end
+	flex-direction: column
+	margin-bottom: 5rem
+	position: relative
 	width: 100%
+	overflow: hidden
 
 .chat__message
 	border: solid 0
 	color: #e6dada
-	text-align: justify
 	font-family: Arial, Helvetica, sans-serif
 	margin: 0.5rem
+	max-width: 60%
 	padding: 1rem
-	width: 60%
+	text-align: justify
+	word-wrap: break-word
 
 	&--user
+		align-self: flex-end
 		background: #477238
 		border-radius: 1rem 1rem 0 1rem
-		float: right
+		box-shadow: 0.3rem 0.3rem 0.5rem 0.1rem #111111
 
 	&--bot
+		align-self: flex-start
 		background: #323232
 		border-radius: 0rem 1rem 1rem 1rem
-		float: left
+		box-shadow: -0.3rem 0.3rem 0.5rem 0.1rem #111111
 
 .input
 	align-items: center
@@ -31,6 +37,9 @@
 	justify-content: space-between
 	position: fixed
 	width: 100%
+
+	@media screen and (min-width: 768px)
+		background: white
 
 .input__text
 	background: white
@@ -44,6 +53,9 @@
 	margin-right: 0.5rem
 	padding: 0.5rem
 
+	@media screen and (min-width: 768px)
+		border-radius: 0
+		margin-left: 0
 	&:focus
 		outline: 0
 

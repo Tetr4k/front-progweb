@@ -1,12 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Media from "react-media";
 import Chat from "./components/Chat";
+import "./App.sass"
 
 function App() {
   return (
     <BrowserRouter>
       {/* Para celular */}
-      <Media query="(max-width: 1080px)">
+      <Media query="(max-width: 768px)">
         <Routes>
           <Route exact path="/"/>
           <Route path="/cadastro"/>
@@ -16,7 +17,7 @@ function App() {
       </Media>
 
       {/* Para pc */}
-      <Media query="(min-width: 1081px)">
+      <Media query="(min-width: 768px)">
         <Routes>
           <Route exact path="/"/>
           <Route path="/cadastro"/>
