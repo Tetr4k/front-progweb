@@ -1,9 +1,10 @@
 import classNames from "classnames";
-import "./index.sass"
 
 import { useState } from "react";
 
-function Chat() {
+import { BsFillSendFill } from 'react-icons/bs'
+
+function Chat(props) {
 	const [history, setHistory] = useState([{owner: false, message: "Hello!"}]);
 	const [message, setMessage] = useState("");
 
@@ -20,7 +21,8 @@ function Chat() {
 		const itemClasses = classNames(
 			'chat__message',
 			{'chat__message--user': elem.owner},
-			{'chat__message--bot': !elem.owner}
+			{'chat__message--bot': !elem.owner},
+			{dark: props.theme}
 		) 
 		return <li className={itemClasses} key={index}>{elem.message}</li>
 	})
@@ -34,21 +36,30 @@ function Chat() {
 		}
 	}
 
+	const textInputClass = classNames("input__text", {dark: props.theme})
+	const buttonClass = classNames("send__button", {dark: props.theme})
+	const inputClass = classNames("input", {dark: props.theme})
+	
 	return (
-		<main>
-			<ul className="chat">
+		<main className="chat">
+			<ul className="messages">
 				{renderChat()}
 			</ul>
-			<div className="input">
+			<div className={inputClass}>
 				<input 
 					type="text"
 					value={message}
-					className="input__text"
+					className={textInputClass}
 					onChange={handleMessageChange}
 					onKeyUp={handleEnterPressed}
 					placeholder="Mensagem..."
 				/>
-				<button className="input__button" onClick={addMessage}>→</button>
+				<button
+					className={buttonClass} 
+					onClick={addMessage}
+				>
+					<BsFillSendFill/>
+				</button>
 			</div>
 		</main>
 	);
